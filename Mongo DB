@@ -1,0 +1,338 @@
+show dbs;
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+use vighas
+switched to db vighas
+db
+vighas
+db.vighascollection.insert({Name: "AAA", RollNumber: "21CS111", Age: 11, Department: "CSE"});
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6491b288d32c5e21efc76ac1")
+  }
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 11,
+  Department: 'CSE'
+}
+db.vighascollection.insert({Name: "BBB", RollNumber: "21CS222", Age: 22, Department: "CSE"});
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6491b2c2d32c5e21efc76ac2")
+  }
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 11,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: '21CS222',
+  Age: 22,
+  Department: 'CSE'
+}
+db.vighascollection.insertMany([{Name: "CCC", RollNumber: "21CS333", Age: 33, Department: "CSE"}, {Name: "DDD", RollNumber: "21CS444", Age: 44, Department: "CSE"}, {Name: "EEE", RollNumber: "21CS555", Age: 55, Department: "CSE"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6491b4bdd32c5e21efc76ac3"),
+    '1': ObjectId("6491b4bdd32c5e21efc76ac4"),
+    '2': ObjectId("6491b4bdd32c5e21efc76ac5")
+  }
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 11,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: '21CS222',
+  Age: 22,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac3"),
+  Name: 'CCC',
+  RollNumber: '21CS333',
+  Age: 33,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'DDD',
+  RollNumber: '21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
+db.vighascollection.updateOne({Name: "AAA"}, {$set: {Age: 10}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 10,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: '21CS222',
+  Age: 22,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac3"),
+  Name: 'CCC',
+  RollNumber: '21CS333',
+  Age: 33,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'DDD',
+  RollNumber: '21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
+db.vighascollection.updateMany({Name: "BBB"}, {$set: {RollNumber: "Updated 21CS222"}}, {$set: {Age: "20"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 10,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: 'Updated 21CS222',
+  Age: 22,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac3"),
+  Name: 'CCC',
+  RollNumber: '21CS333',
+  Age: 33,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'DDD',
+  RollNumber: '21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
+db.vighascollection.updateOne({Name: "BBB"}, {$set: {RollNumber: "Updated 21CS222"}}, {$set: {Age: "20"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 10,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: 'Updated 21CS222',
+  Age: 22,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac3"),
+  Name: 'CCC',
+  RollNumber: '21CS333',
+  Age: 33,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'DDD',
+  RollNumber: '21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
+db.vighascollection.updateOne({Name: "BBB"}, {$set: {Age: 20}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 10,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: 'Updated 21CS222',
+  Age: 20,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac3"),
+  Name: 'CCC',
+  RollNumber: '21CS333',
+  Age: 33,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'DDD',
+  RollNumber: '21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
+db.vighascollection.deleteOne({Name: "CCC"});
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 10,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: 'Updated 21CS222',
+  Age: 20,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'DDD',
+  RollNumber: '21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
+db.vighascollection.updateOne({_id:ObjectId("6491b4bdd32c5e21efc76ac4")}, {$set: {Name: "updatedDDD", RollNumber: "updated21CS444"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.vighascollection.find()
+{
+  _id: ObjectId("6491b288d32c5e21efc76ac1"),
+  Name: 'AAA',
+  RollNumber: '21CS111',
+  Age: 10,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b2c2d32c5e21efc76ac2"),
+  Name: 'BBB',
+  RollNumber: 'Updated 21CS222',
+  Age: 20,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac4"),
+  Name: 'updatedDDD',
+  RollNumber: 'updated21CS444',
+  Age: 44,
+  Department: 'CSE'
+}
+{
+  _id: ObjectId("6491b4bdd32c5e21efc76ac5"),
+  Name: 'EEE',
+  RollNumber: '21CS555',
+  Age: 55,
+  Department: 'CSE'
+}
